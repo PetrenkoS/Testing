@@ -1,28 +1,21 @@
-package ru.stqa.pft.addressbook;
+package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Admin on 12.07.2017.
  */
-public class TestBase {
+public class ApplicationManager {
 
 
   FirefoxDriver wd;
-
-
-
-  @AfterMethod
-  public void tearDown() {
-      wd.quit();
-  }
 
   public static boolean isAlertPresent(FirefoxDriver wd) {
       try {
@@ -33,12 +26,15 @@ public class TestBase {
       }
   }
 
-    @BeforeMethod
-  public void setUp() throws Exception {
-      wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-      wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-      wd.get("http://localhost/addressbook/");
-      login("admin", "secret");
+  public void stop() {
+    wd.quit();
+  }
+
+  public void init() {
+    wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
+    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    wd.get("http://localhost/addressbook/");
+    login("admin", "secret");
   }
 
   private void login(String username, String password) {
@@ -52,17 +48,15 @@ public class TestBase {
       wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
 
-
-  protected void returntoGroupPage() {
+  public void returntoGroupPage() {
       wd.findElement(By.linkText("group page")).click();
   }
 
-
-  protected void submitGroupCreation() {
+  public void submitGroupCreation() {
       wd.findElement(By.name("submit")).click();
   }
 
-    protected void fillGroupForm(GroupData groupData) {
+  public void fillGroupForm(GroupData groupData) {
       wd.findElement(By.name("group_name")).click();
       wd.findElement(By.name("group_name")).clear();
       wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
@@ -74,17 +68,15 @@ public class TestBase {
       wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
   }
 
-  protected void initGroupCreation() {
+  public void initGroupCreation() {
       wd.findElement(By.name("new")).click();
   }
 
-
-  protected void gotoGroupPage() {
+  public void gotoGroupPage() {
       wd.findElement(By.linkText("groups")).click();
   }
 
-
-  protected void fillContactForms(ContactData contactData) {
+  public void fillContactForms(ContactData contactData) {
       wd.findElement(By.name("firstname")).click();
       wd.findElement(By.name("firstname")).clear();
       wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
@@ -100,48 +92,48 @@ public class TestBase {
       wd.findElement(By.name("address2")).click();
   }
 
-  protected void submitAddContact() {
+  public void submitAddContact() {
       wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  protected void gotoHomePage() {
+  public void gotoHomePage() {
       wd.findElement(By.linkText("home")).click();
   }
 
-  protected void gotoAddContactPage() {
+  public void gotoAddContactPage() {
       wd.findElement(By.linkText("add new")).click();
   }
 
-  protected void initGroupDeletion() {
+  public void initGroupDeletion() {
     wd.findElement(By.xpath("//div[@id='content']/form/input[5]")).click();
   }
 
-  protected void selectContactOrGroup() {
+  public void selectContactOrGroup() {
     wd.findElement(By.name("selected[]")).click();
   }
 
-  protected void deleteSelectedContacts() {
+  public void deleteSelectedContacts() {
     wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
     wd.switchTo().alert().accept();
   }
 
-  protected void selectContacts() {
+  public void selectContacts() {
     selectContactOrGroup();
   }
 
-  protected void submitGroupModification() {
+  public void submitGroupModification() {
     wd.findElement(By.name("update")).click();
   }
 
-  protected void initGroupModification() {
+  public void initGroupModification() {
     wd.findElement(By.name("edit")).click();
   }
 
-  protected void submitContactModification() {
+  public void submitContactModification() {
     wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
   }
 
-  protected void initContactModification() {
+  public void initContactModification() {
     wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[3]/td[8]/a/img")).click();
   }
 }
