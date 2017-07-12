@@ -136,4 +136,12 @@ public class TestBase {
   protected void initGroupModification() {
     wd.findElement(By.name("edit")).click();
   }
+
+  protected void submitContactModification() {
+    wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
+  }
+
+  protected void initContactModification() {
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[3]/td[8]/a/img")).click();
+  }
 }
