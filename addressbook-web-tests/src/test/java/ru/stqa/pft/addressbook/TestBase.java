@@ -128,4 +128,12 @@ public class TestBase {
   protected void selectContacts() {
     selectContactOrGroup();
   }
+
+  protected void submitGroupModification() {
+    wd.findElement(By.name("update")).click();
+  }
+
+  protected void initGroupModification() {
+    wd.findElement(By.name("edit")).click();
+  }
 }
