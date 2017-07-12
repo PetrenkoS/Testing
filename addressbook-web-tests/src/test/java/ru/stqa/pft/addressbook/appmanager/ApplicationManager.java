@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,9 +11,12 @@ import java.util.concurrent.TimeUnit;
  * Created by Admin on 12.07.2017.
  */
 public class ApplicationManager {
-
-
   FirefoxDriver wd;
+
+
+  private NavigationHelper navigationHelper;
+  private ContactHelper contactHelper;
+  private GroupHelper groupHelper;
 
   public static boolean isAlertPresent(FirefoxDriver wd) {
       try {
@@ -34,6 +35,9 @@ public class ApplicationManager {
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
+    groupHelper = new GroupHelper(wd);
+    contactHelper = new ContactHelper(wd);
+    navigationHelper = new NavigationHelper(wd);
     login("admin", "secret");
   }
 
@@ -48,92 +52,15 @@ public class ApplicationManager {
       wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
 
-  public void returntoGroupPage() {
-      wd.findElement(By.linkText("group page")).click();
+  public GroupHelper getGroupHelper() {
+    return groupHelper;
   }
 
-  public void submitGroupCreation() {
-      wd.findElement(By.name("submit")).click();
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 
-  public void fillGroupForm(GroupData groupData) {
-      wd.findElement(By.name("group_name")).click();
-      wd.findElement(By.name("group_name")).clear();
-      wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
-      wd.findElement(By.name("group_header")).click();
-      wd.findElement(By.name("group_header")).clear();
-      wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-      wd.findElement(By.name("group_footer")).click();
-      wd.findElement(By.name("group_footer")).clear();
-      wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
-  }
-
-  public void initGroupCreation() {
-      wd.findElement(By.name("new")).click();
-  }
-
-  public void gotoGroupPage() {
-      wd.findElement(By.linkText("groups")).click();
-  }
-
-  public void fillContactForms(ContactData contactData) {
-      wd.findElement(By.name("firstname")).click();
-      wd.findElement(By.name("firstname")).clear();
-      wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
-      wd.findElement(By.name("lastname")).click();
-      wd.findElement(By.name("lastname")).clear();
-      wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
-      wd.findElement(By.name("address")).click();
-      wd.findElement(By.name("address")).clear();
-      wd.findElement(By.name("address")).sendKeys(contactData.getAddress());
-      wd.findElement(By.name("home")).click();
-      wd.findElement(By.name("home")).clear();
-      wd.findElement(By.name("home")).sendKeys(contactData.getHometelephone());
-      wd.findElement(By.name("address2")).click();
-  }
-
-  public void submitAddContact() {
-      wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
-  }
-
-  public void gotoHomePage() {
-      wd.findElement(By.linkText("home")).click();
-  }
-
-  public void gotoAddContactPage() {
-      wd.findElement(By.linkText("add new")).click();
-  }
-
-  public void initGroupDeletion() {
-    wd.findElement(By.xpath("//div[@id='content']/form/input[5]")).click();
-  }
-
-  public void selectContactOrGroup() {
-    wd.findElement(By.name("selected[]")).click();
-  }
-
-  public void deleteSelectedContacts() {
-    wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
-    wd.switchTo().alert().accept();
-  }
-
-  public void selectContacts() {
-    selectContactOrGroup();
-  }
-
-  public void submitGroupModification() {
-    wd.findElement(By.name("update")).click();
-  }
-
-  public void initGroupModification() {
-    wd.findElement(By.name("edit")).click();
-  }
-
-  public void submitContactModification() {
-    wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
-  }
-
-  public void initContactModification() {
-    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[3]/td[8]/a/img")).click();
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
   }
 }

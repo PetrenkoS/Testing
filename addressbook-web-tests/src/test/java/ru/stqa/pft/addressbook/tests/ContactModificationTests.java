@@ -10,12 +10,12 @@ public class ContactModificationTests extends TestBase {
 
   @Test
   public void testContactModification() {
-    app.gotoHomePage();
-    app.selectContactOrGroup();
-    app.initContactModification();
-    app.fillContactForms(new ContactData("gkv", "gbhvzl", "bxlvz", "gsi"));
-    app.submitContactModification();
-    app.gotoHomePage();
+    app.getNavigationHelper().gotoHomePage();
+    app.getContactHelper().selectContactOrGroup();
+    app.getContactHelper().initContactModification();
+    app.getContactHelper().fillContactForms(new ContactData("gkv", "gbhvzl", "bxlvz", "gsi"));
+    app.getContactHelper().submitContactModification();
+    app.getNavigationHelper().gotoHomePage();
   }
 
 }
