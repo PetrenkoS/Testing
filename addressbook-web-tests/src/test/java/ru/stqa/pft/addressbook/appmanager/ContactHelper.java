@@ -1,17 +1,18 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 /**
  * Created by Admin on 12.07.2017.
  */
-public class ContactHelper {
-  private FirefoxDriver wd;
+public class ContactHelper extends HelperBase {
 
-  public ContactHelper(FirefoxDriver wd) {
-    this.wd = wd;
+
+  public ContactHelper(WebDriver wd) {
+    super(wd);
   }
 
   public void fillContactForms(ContactData contactData) {

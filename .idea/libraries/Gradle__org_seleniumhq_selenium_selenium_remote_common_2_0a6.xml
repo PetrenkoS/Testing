@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.seleniumhq.selenium:selenium-remote-common:2.0a6">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-common/2.0a6/5adddc05107f66d95af2dbc2713de08dad3aea38/selenium-remote-common-2.0a6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-common/2.0a6/181678525c3b3dafa6f7a2d089cdeca611a283d5/selenium-remote-common-2.0a6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
