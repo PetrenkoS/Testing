@@ -59,4 +59,8 @@ public class GroupHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
 
   }
+
+  public void selectGroup(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
+      }
 }
