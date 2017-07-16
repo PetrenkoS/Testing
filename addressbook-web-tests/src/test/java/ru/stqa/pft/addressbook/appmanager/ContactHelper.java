@@ -1,12 +1,14 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Admin on 12.07.2017.
@@ -53,7 +55,7 @@ public class ContactHelper extends HelperBase {
     wd.switchTo().alert().accept();
   }
 
-    public void submitContactModification() {
+  public void submitContactModification() {
     wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
   }
 
@@ -65,11 +67,11 @@ public class ContactHelper extends HelperBase {
     gotoAddContactPage();
     fillContactForms(contact, true);
     submitAddContact();
-      }
+  }
 
   private void gotoAddContactPage() {
-          click(By.linkText("add new"));
-    }
+    click(By.linkText("add new"));
+  }
 
 
   public boolean isThereAContact() {
@@ -78,5 +80,26 @@ public class ContactHelper extends HelperBase {
 
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
+  }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.xpath("//tr[contains(@name,\"entry\")]"));
+    for (WebElement element : elements) {
+      String firstname = getFirstName(element);
+      String lastname = getLastName(element);
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
+      ContactData contact = new ContactData(firstname, lastname, null, null, null);
+      contacts.add(contact);
+    }
+    return contacts;
+  }
+
+  private String getLastName(WebElement element) {
+    return element.findElement(By.xpath("./td[2]")).getText();
+  }
+
+  private String getFirstName(WebElement element) {
+    return element.findElement(By.xpath("./td[3]")).getText();
   }
 }

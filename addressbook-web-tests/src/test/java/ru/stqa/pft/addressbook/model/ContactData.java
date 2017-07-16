@@ -31,7 +31,5 @@ public class ContactData {
     return hometelephone;
   }
 
-  public String getGroup() {
-    return group;
-  }
+  public String getGroup() {     return group;   }
 }

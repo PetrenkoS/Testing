@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.List;
+
 /**
  * Created by Admin on 12.07.2017.
  */
@@ -17,14 +19,14 @@ public class ContactModificationTests extends TestBase {
       app.getContactHelper().createContact(new ContactData("1", "2", "3", "34", "test1"), true);
     }
     app.getNavigationHelper().gotoHomePage();
-    int before = app.getContactHelper().getContactCount();
-    app.getContactHelper().selectContact(0);
+    List<ContactData> before = app.getContactHelper().getContactList();
+    app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().initContactModification();
     app.getContactHelper().fillContactForms(new ContactData("gkv", "gbhvzl", "bxlvz", "gsi", null), false);
     app.getContactHelper().submitContactModification();
     app.getNavigationHelper().gotoHomePage();
-    int after = app.getContactHelper().getContactCount();
-    Assert.assertEquals(after, before);
+    List<ContactData> after = app.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(), before.size());
 
 
   }
