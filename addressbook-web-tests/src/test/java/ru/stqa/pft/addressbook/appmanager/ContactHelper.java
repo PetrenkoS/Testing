@@ -41,6 +41,14 @@ public class ContactHelper extends HelperBase {
     }
   }
 
+  private String getLastName(WebElement element) {
+    return element.findElement(By.xpath("./td[2]")).getText();
+  }
+
+  private String getFirstName(WebElement element) {
+    return element.findElement(By.xpath("./td[3]")).getText();
+  }
+
   public void modify(int index, ContactData contact) {
     selectContact(index);
     initContactModification();
@@ -69,25 +77,15 @@ public class ContactHelper extends HelperBase {
   }
 
   public void create(ContactData contact, boolean creation) {
-    gotoAddContactPage();
-    fillContactForms(contact, true);
+    fillContactForms(contact, creation);
     submitAddContact();
   }
 
-  public void create(ContactData contact) {
-    fillContactForms(contact, true);
-    submitAddContact();
-      }
 
   public void delete(int index) {
     selectContact(index);
     deleteSelectedContacts();
   }
-
-  private void gotoAddContactPage() {
-    click(By.linkText("add new"));
-  }
-
 
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
@@ -104,17 +102,10 @@ public class ContactHelper extends HelperBase {
       String firstname = getFirstName(element);
       String lastname = getLastName(element);
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-      ContactData contact = new ContactData(id, firstname, lastname, null, null, null);
-      contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
     }
     return contacts;
   }
 
-  private String getLastName(WebElement element) {
-    return element.findElement(By.xpath("./td[2]")).getText();
-  }
 
-  private String getFirstName(WebElement element) {
-    return element.findElement(By.xpath("./td[3]")).getText();
-  }
 }
