@@ -7,7 +7,7 @@ public class GroupData {
   private String footer;
 
 
-  public GroupData withID(int id) {
+  public GroupData withId(int id) {
     this.id = id;
     return this;
   }
