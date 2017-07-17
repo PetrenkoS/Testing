@@ -41,7 +41,12 @@ public class ContactHelper extends HelperBase {
     }
   }
 
-
+  public void modify(int index, ContactData contact) {
+    selectContact(index);
+    initContactModification();
+    fillContactForms(contact, false);
+    submitContactModification();
+  }
   public void submitAddContact() {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
@@ -63,10 +68,20 @@ public class ContactHelper extends HelperBase {
     wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
   }
 
-  public void createContact(ContactData contact, boolean creation) {
+  public void create(ContactData contact, boolean creation) {
     gotoAddContactPage();
     fillContactForms(contact, true);
     submitAddContact();
+  }
+
+  public void create(ContactData contact) {
+    fillContactForms(contact, true);
+    submitAddContact();
+      }
+
+  public void delete(int index) {
+    selectContact(index);
+    deleteSelectedContacts();
   }
 
   private void gotoAddContactPage() {
@@ -82,7 +97,7 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[contains(@name,\"entry\")]"));
     for (WebElement element : elements) {

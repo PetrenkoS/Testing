@@ -9,16 +9,15 @@ import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
-  @Test(enabled = false)
+  @Test
   public void testsContactCreation() {
 
-    List<ContactData> before = app.getContactHelper().getContactList();
+    List<ContactData> before = app.contact().list();
     app.goTo().gotoAddContactPage();
     ContactData contact = new ContactData("Vladimir", "Putin", "Kremlin", "111", "test1");
-    app.getContactHelper().fillContactForms(contact, true);
-    app.getContactHelper().submitAddContact();
-    app.goTo().gotoHomePage();
-    List<ContactData> after = app.getContactHelper().getContactList();
+    app.contact().create(contact);
+    app.goTo().homePage();
+    List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
 
@@ -28,5 +27,7 @@ public class ContactCreationTests extends TestBase {
     after.sort(byId);
     Assert.assertEquals(before, after);
   }
+
+
 
 }
