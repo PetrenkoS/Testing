@@ -34,7 +34,7 @@ public class ContactHelper extends HelperBase {
     wd.findElement(By.name("home")).clear();
     wd.findElement(By.name("home")).sendKeys(contactData.getHometelephone());
     wd.findElement(By.name("address2")).click();
-    if (creation) {
+    if(creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));

@@ -16,7 +16,8 @@ public class ContactCreationTests extends TestBase {
     app.goTo().gotoAddContactPage();
     ContactData contact = new ContactData()
             .withFirstname("Vladimir").withLastname("Putin").withAddress("Kremlin").withHometelephone("111");
-    app.contact().create(contact, true);
+    app.contact().create(new ContactData()
+            .withFirstname("Vladimir").withLastname("Putin").withAddress("Kremlin").withHometelephone("111").withGroup("test1"), true); // Эта строчка не работает почему-то, если поставить "contact, true"
     app.goTo().homePage();
     Contacts after = app.contact().all();
     assertThat(after.size(), equalTo(before.size() + 1));
