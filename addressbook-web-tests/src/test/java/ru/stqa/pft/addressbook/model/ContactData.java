@@ -8,10 +8,16 @@ public class ContactData {
   private String hometelephone;
   private String mobilePhone;
   private String workPhone;
+  private String allPhones;
   private String group;
 
-  public ContactData() {
-  }
+
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+      }
+
 
   public ContactData withId(int id) {
     this.id = id;
@@ -80,6 +86,7 @@ public class ContactData {
 
   public String getWorkPhone() {return workPhone;  }
 
+  public String getAllPhones() { return allPhones;  }
 
   public String getGroup() {     return group;   }
 
