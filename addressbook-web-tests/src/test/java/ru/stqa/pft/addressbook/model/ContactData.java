@@ -1,22 +1,20 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private int id = Integer.MAX_VALUE;;
+  private int id = Integer.MAX_VALUE;
+  ;
   private String firstname;
   private String lastname;
   private String address;
+  private String email;
+  private String email2;
+  private String email3;
   private String hometelephone;
   private String mobilePhone;
   private String workPhone;
   private String allPhones;
+  private String allEmails;
   private String group;
-
-
-
-  public ContactData withAllPhones(String allPhones) {
-    this.allPhones = allPhones;
-    return this;
-      }
 
 
   public ContactData withId(int id) {
@@ -39,6 +37,28 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+
+  public ContactData withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+
   public ContactData withHometelephone(String hometelephone) {
     this.hometelephone = hometelephone;
     return this;
@@ -59,12 +79,15 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
 
 
-
-
-
-  public int getId() {  return id;  }
+  public int getId() {
+    return id;
+  }
 
   public String getFirstname() {
     return firstname;
@@ -78,17 +101,41 @@ public class ContactData {
     return address;
   }
 
+  public String getEmail() {
+    return email;
+  }
+
+  public String getEmail2() {
+    return email2;
+  }
+
+  public String getEmail3() {
+    return email3;
+  }
+
   public String getHometelephone() {
     return hometelephone;
   }
 
-  public String getMobilePhone() { return mobilePhone; }
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
 
-  public String getWorkPhone() {return workPhone;  }
+  public String getWorkPhone() {
+    return workPhone;
+  }
 
-  public String getAllPhones() { return allPhones;  }
+  public String getAllPhones() {
+    return allPhones;
+  }
 
-  public String getGroup() {     return group;   }
+  public String getAllEmails() {
+    return allEmails;
+  }
+
+  public String getGroup() {
+    return group;
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -119,7 +166,6 @@ public class ContactData {
             ", lastname='" + lastname + '\'' +
             '}';
   }
-
 
 
 }
