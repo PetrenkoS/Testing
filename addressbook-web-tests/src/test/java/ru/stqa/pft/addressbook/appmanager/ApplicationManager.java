@@ -51,9 +51,7 @@ public class ApplicationManager {
     wd.quit();
   }
 
-  public GroupHelper group() {
-    return groupHelper;
-  }
+  public GroupHelper group() {   return groupHelper;   }
 
   public ContactHelper contact() {
     return contactHelper;
