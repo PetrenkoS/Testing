@@ -10,4 +10,6 @@ dependencies {
     compile 'org.seleniumhq.selenium:selenium-java:3.4.0'
     compile 'org.hamcrest:hamcrest-junit:2.0.0.0'
     compile 'org.gosu-lang.gosu.managed:gw-jcommander:1.48'
-    }
+    compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.8'
+
+}
