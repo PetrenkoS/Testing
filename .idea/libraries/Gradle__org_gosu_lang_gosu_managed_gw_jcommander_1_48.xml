@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.gosu-lang.gosu.managed:gw-jcommander:1.48">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gosu-lang.gosu.managed/gw-jcommander/1.48/ddec8eb2d93be6fec41eaab61ee226d64265964b/gw-jcommander-1.48.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gosu-lang.gosu.managed/gw-jcommander/1.48/fe540a42ff6d4f2757d3038d8bd671de8b41b3b3/gw-jcommander-1.48-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
