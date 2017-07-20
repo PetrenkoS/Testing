@@ -19,21 +19,20 @@ public class GroupCreationTests extends TestBase {
 
   @DataProvider
   public Iterator<Object[]> validGroups() throws IOException { // Делает массив данных для одного запуска тестов
-    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.xml")));
-    String xml = "";
-    String line = reader.readLine();
-    while (line != null) {
-      xml += line;
-      line = reader.readLine();
-    }
-    //list.add(new Object[]{new GroupData().withName("test1").withHeader("header 1").withFooter("footer 1")});
-    //list.add(new Object[]{new GroupData().withName("test2").withHeader("header 2").withFooter("footer 2")});
-    //list.add(new Object[]{new GroupData().withName("test3").withHeader("header 3").withFooter("footer 3")});
-    XStream xstream = new XStream();
-    xstream.processAnnotations(GroupData.class);
-    List<GroupData> groups = (List<GroupData>) xstream.fromXML(xml);
-    return groups.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
+    try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.xml")))) {
+      String xml = "";
+      String line = reader.readLine();
+      while (line != null) {
+        xml += line;
+        line = reader.readLine();
       }
+
+      XStream xstream = new XStream();
+      xstream.processAnnotations(GroupData.class);
+      List<GroupData> groups = (List<GroupData>) xstream.fromXML(xml);
+      return groups.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
+    }
+  }
 
   @Test(dataProvider = "validGroups")
   public void testsGroupCreation(GroupData group) {
