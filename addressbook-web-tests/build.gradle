@@ -13,6 +13,8 @@ dependencies {
     compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.8'
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'ch.qos.logback:logback-classic:1.1.5'
+    compile 'mysql:mysql-connector-java:5.1.38'
+
 
 }
 
