@@ -35,9 +35,7 @@ public class GroupData {
 
   public int getId() { return id;   }
 
-  public String getName() {
-    return name;
-  }
+  public String getName() {     return name;   }
 
   public String getHeader() {
     return header;
