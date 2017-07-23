@@ -30,16 +30,13 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
-    attach(By.name("photo"), contactData.getPhoto());
-
-    if(creation) {
-      if (contactData.getGroup() != null) {
-        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-      }
-    }else {
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    //attach(By.name("photo"), contactData.getPhoto());
+    //if(creation) {
+             // new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        // } else {
+     // Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
-  }
+
 
   private String getLastName(WebElement element) {
     return element.findElement(By.xpath("./td[2]")).getText();
@@ -67,22 +64,24 @@ public class ContactHelper extends HelperBase {
 
 
   public void deleteSelectedContacts() {
-    wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     wd.switchTo().alert().accept();
   }
 
   public void submitContactModification() {
-    wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
+    click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
 
   public void initContactModification(int id) {
     //wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
-    wd.findElement(By.cssSelector("a[href = 'edit.php?id=" + id + "']")).click();
+    //wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+    click(By.cssSelector("a[href = 'edit.php?id=" + id + "']"));
   }
 
   public void create(ContactData contact, boolean creation) {
     fillContactForms(contact, creation);
     submitAddContact();
+
   }
 
 
@@ -93,6 +92,7 @@ public class ContactHelper extends HelperBase {
 
   private void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+
   }
 
   public boolean isThereAContact() {
