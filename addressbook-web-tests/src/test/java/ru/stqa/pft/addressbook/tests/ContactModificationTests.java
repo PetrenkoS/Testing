@@ -32,9 +32,9 @@ public class ContactModificationTests extends TestBase {
 
     Contacts before = app.db().contacts();
     ContactData modifiedContact = before.iterator().next();
+    app.goTo().homePage();
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId()).withFirstname("45").withLastname("78").withAddress("hl").withHometelephone("456").withGroup("test1");
-    app.goTo().homePage();
     app.contact().modify(contact);
     app.goTo().homePage();
     Contacts after = app.db().contacts();

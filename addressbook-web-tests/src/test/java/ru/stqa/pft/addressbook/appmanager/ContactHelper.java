@@ -74,8 +74,8 @@ public class ContactHelper extends HelperBase {
 
   public void initContactModification(int id) {
     //wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
-    //wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
-    click(By.cssSelector("a[href = 'edit.php?id=" + id + "']"));
+    // click(By.cssSelector(String.format("a[href='edit.php?id=%s']", id)));
+   click(By.cssSelector("a[href = 'edit.php?id=" + id + "']"));
   }
 
   public void create(ContactData contact, boolean creation) {
