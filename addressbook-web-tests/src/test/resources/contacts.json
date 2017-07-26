@@ -4,17 +4,5 @@
     "lastname": "lastname 0",
     "address": "address 0",
     "hometelephone": "hometelephone 0"
-  },
-  {
-    "firstname": "firstname 1",
-    "lastname": "lastname 1",
-    "address": "address 1",
-    "hometelephone": "hometelephone 1"
-  },
-  {
-    "firstname": "firstname 2",
-    "lastname": "lastname 2",
-    "address": "address 2",
-    "hometelephone": "hometelephone 2"
   }
 ]

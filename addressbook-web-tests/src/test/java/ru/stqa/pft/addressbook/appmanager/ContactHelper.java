@@ -36,10 +36,10 @@ public class ContactHelper extends HelperBase {
         Assert.assertTrue(contactData.getGroups().size() == 1); //При условии, что список групп равен 1
         new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
       }
-    }else {
-        Assert.assertFalse(isElementPresent(By.name("new_group")));
-      }
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
+  }
 
 
   private String getLastName(WebElement element) {
@@ -50,9 +50,13 @@ public class ContactHelper extends HelperBase {
     return element.findElement(By.xpath("./td[3]")).getText();
   }
 
-  private String getEmails(WebElement element) { return element.findElement(By.xpath("./td[5]")).getText(); }
+  private String getEmails(WebElement element) {
+    return element.findElement(By.xpath("./td[5]")).getText();
+  }
 
-  private String getAllPhones(WebElement element) { return element.findElement(By.xpath("./td[6]")).getText(); }
+  private String getAllPhones(WebElement element) {
+    return element.findElement(By.xpath("./td[6]")).getText();
+  }
 
 
   public void modify(ContactData contact) {
@@ -79,7 +83,7 @@ public class ContactHelper extends HelperBase {
   public void initContactModification(int id) {
     //wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
     // click(By.cssSelector(String.format("a[href='edit.php?id=%s']", id)));
-   click(By.cssSelector("a[href = 'edit.php?id=" + id + "']"));
+    click(By.cssSelector("a[href = 'edit.php?id=" + id + "']"));
   }
 
   public void create(ContactData contact, boolean creation) {
@@ -88,14 +92,29 @@ public class ContactHelper extends HelperBase {
 
   }
 
+  public void deleteSelectedContactsFromGroup(ContactData contact) {
+    if (!wd.findElement(By.xpath("//form[@id='right']/select//option[3]")).isSelected()) { //выбираем наверху справа группу
+      click(By.xpath("//form[@id='right']/select//option[3]"));
+    }
+    selectContactById(contact.getId());
+    click(By.name("remove"));
+    wd.switchTo().alert().accept();
+  }
 
-    public void delete(ContactData contact) {
+  public void addSelectedContactsToGroup(ContactData contact) {
+    selectContactById(contact.getId());
+    wd.findElement(By.xpath("//select[@name='group']//option[@value='" + "" + "']")).click();
+    wd.findElement(By.name("add")).click();
+  }
+
+
+  public void delete(ContactData contact) {
     selectContactById(contact.getId());
     deleteSelectedContacts();
   }
 
   private void selectContactById(int id) {
-    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
 
   }
 
@@ -107,17 +126,17 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-   // public Contacts all() {
+  // public Contacts all() {
   //    Contacts contacts = new Contacts();
   //  List<WebElement> elements = wd.findElements(By.xpath("//tr[contains(@name,\"entry\")]"));
-   // for (WebElement element : elements) {
+  // for (WebElement element : elements) {
   //    String firstname = getFirstName(element);
   //    String lastname = getLastName(element);
   //    int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-   //   contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+  //   contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
   //  }
   //  return contacts;
- // }
+  // }
 
   public Contacts all() {
     Contacts contacts = new Contacts();
@@ -131,7 +150,7 @@ public class ContactHelper extends HelperBase {
       String allEmails = cells.get(4).getText();
       String allPhones = cells.get(5).getText();
       contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).withAddress(address)
-             .withAllEmails(allEmails).withAllPhones(allPhones));
+              .withAllEmails(allEmails).withAllPhones(allPhones));
     }
     return contacts;
   }
