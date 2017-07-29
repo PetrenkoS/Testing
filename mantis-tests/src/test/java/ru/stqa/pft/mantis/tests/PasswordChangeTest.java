@@ -27,8 +27,8 @@ public class PasswordChangeTest extends TestBase {
   public void testPasswordChange() throws IOException, MessagingException {
     app.passwordChangeHelper().login("administrator", "root");
     app.passwordChangeHelper().gotoManageUsers();
-    app.passwordChangeHelper().selectUser();
     String user = app.db().getUsername();
+    app.passwordChangeHelper().selectUser();
     app.passwordChangeHelper().resetPassword();
     List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
     String email = user+"@localhost.localdomain";

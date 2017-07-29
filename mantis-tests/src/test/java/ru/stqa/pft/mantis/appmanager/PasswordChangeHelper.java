@@ -33,10 +33,9 @@ public class PasswordChangeHelper extends HelperBase{
   }
 
   public void selectUser() {
-    click(By.linkText("user1501244209595"));
-    // click(By.name("user1501246092707"));
+    //click(By.linkText("user1501244209595"));
     //click(By.cssSelector(String.format("a[href='manage_user_edit_page.php?user_id=%s']", id)));
-    //click(By.xpath(String.format("//a[contains(., 'user_id=%s']", id)));
+    click(By.xpath("//table[3]/tbody/tr[4]/td[1]/a"));
       }
 
   public void resetPassword() {
