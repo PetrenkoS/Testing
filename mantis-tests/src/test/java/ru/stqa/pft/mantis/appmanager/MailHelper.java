@@ -13,8 +13,6 @@ import java.util.stream.Collectors;
 import javax.mail.MessagingException;
 
 
-
-
 /**
  * Created by Admin on 26.07.2017.
  */

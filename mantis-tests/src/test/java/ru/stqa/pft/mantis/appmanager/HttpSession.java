@@ -25,7 +25,7 @@ public class HttpSession {
 
   public HttpSession(ApplicationManager app) {
     this.app = app;
-    httpClient  = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
+    httpClient = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
 
   }
 
