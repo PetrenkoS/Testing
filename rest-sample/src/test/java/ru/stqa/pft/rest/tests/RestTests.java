@@ -1,4 +1,4 @@
-package ru.stqa.pft.rest;
+package ru.stqa.pft.rest.tests;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -7,11 +7,10 @@ import com.google.gson.reflect.TypeToken;
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.message.BasicNameValuePair;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import ru.stqa.pft.rest.model.Issue;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
@@ -19,7 +18,13 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created by Admin on 30.07.2017.
  */
-public class RestTests {
+public class RestTests extends TestBase {
+
+  @Test
+  public void preconditions() throws IOException {
+    isIssueOpen(5);
+    skipIfNotFixed(8);
+  }
 
   @Test
   public void testCreateIssue() throws IOException {
@@ -36,10 +41,6 @@ public class RestTests {
     JsonElement parsed = new JsonParser().parse(json);
     JsonElement issues = parsed.getAsJsonObject().get("issues");
     return new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
-  }
-
-  private Executor getExecutor() {
-    return Executor.newInstance().auth("LSGjeU4yP1X493ud1hNniA==", "");
   }
 
   private int createIssue(Issue newIssue) throws IOException {

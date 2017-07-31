@@ -1,4 +1,4 @@
-package ru.stqa.pft.rest;
+package ru.stqa.pft.rest.model;
 
 /**
  * Created by Admin on 30.07.2017.
@@ -7,6 +7,16 @@ public class Issue {
 private int id;
 private String subject;
 private String description;
+private String status;
+
+  public String getStatus() {
+    return status;
+  }
+
+  public Issue withStatus(String status) {
+    this.status = status;
+    return this;
+  }
 
   public int getId() {
     return id;
