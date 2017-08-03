@@ -37,64 +37,39 @@ public class DeleteContactFromGroupTest extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() { //Проверяет, есть ли хоть одна группа
-    if (app.db().groups().size() > 0) {
+    if(app.db().groups().size() == 0) {
+      app.goTo().groupPage();
+      app.group().create(new GroupData().withName("test1")
+              .withHeader("test2")
+              .withFooter("test3"));
+    }
+    Groups groups = app.db().groups();
 
+    app.goTo().homePage();
+    if(app.db().contacts().size() == 0) {
+      app.contact().create(new ContactData()
+              .withFirstname("A")
+              .withLastname("B")
+              .inGroup(groups.iterator().next()), true);
     } else {
-    Assert.assertFalse(true, "There is no group");
+      ContactData contact= app.db().contacts().iterator().next();
+      if(contact.getGroups().size() == 0) {
+        contact.inGroup(groups.iterator().next());
+      }
+    }
   }
-  }
- //Проверяет, есть ли в группах контакты
 
   @Test
-  public void testDeleteContactFromGroup(ContactData contact) { //Удаляет контакт из группы
-    Groups groups = app.db().groups();
+  public void testDeleteContactFromGroup() { //Удаляет контакт из группы
+    ContactData contact = app.db().contacts().iterator().next();
+    Groups before = contact.getGroups();
+    GroupData deleteGroup = before.iterator().next();
     app.goTo().homePage();
-    Contacts before = app.db().contacts();
-    ContactData wasteContact = before.iterator().next();
+    app.contact().deleteFromGroup(contact, deleteGroup);
     app.goTo().homePage();
-    app.contact().deleteSelectedContactsFromGroup(wasteContact);
+    app.contact().selectGroupById("");
     app.goTo().homePage();
-    //Contacts after = app.db().contacts();
-   //assertEquals(after.size(), before.size() - 1);
-   //assertThat(after, equalTo(before.without(deletedContact)));
-    verifyContactListInUI();
-
-
-    //throws SQLException
-    //Connection conn = null;
-   // try {
-   //   conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/addressbook?user=root&password=");
-    //  Statement st = conn.createStatement();
-    //  ResultSet rs = st.executeQuery("select id from address_in_groups");
-    //  Groups groups = new Groups();
-    //  while (rs.next()) {
-   //          }
-   //   rs.close();
-   //   st.close();
-    //  conn.close();
-    //  System.out.println(groups);
-   // } catch (SQLException ex) {
-      // handle any errors
-   //   System.out.println("SQLException: " + ex.getMessage());
-   //   System.out.println("SQLState: " + ex.getSQLState());
-   //   System.out.println("VendorError: " + ex.getErrorCode());
-  //  }
-
-   // Groups groups = app.db().groups();
-    //app.goTo().homePage();
-   // Contacts before = app.db().contacts();
-    //ContactData deletedContact = before.iterator().next();
-   // app.goTo().homePage();
-   // app.contact().delete(deletedContact);
-  //  app.goTo().homePage();
-   // Contacts after = app.db().contacts();
-//    assertEquals(after.size(), before.size() - 1);
-//    assertThat(after, equalTo(before.without(deletedContact)));
-   // verifyContactListInUI();
-
-
-
+    Groups after = app.db().contactById(contact.getId()).getGroups();
+    assertThat(after, equalTo(before.without(deleteGroup)));
   }
-
-
 }

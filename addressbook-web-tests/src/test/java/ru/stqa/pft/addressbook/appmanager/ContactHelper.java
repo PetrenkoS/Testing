@@ -107,33 +107,17 @@ public class ContactHelper extends HelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public void addSelectedContactsToGroup(ContactData contact, Set<GroupData> allGroups) {
-   click(By.cssSelector("input[value='"+ contact.getId() + "']"));
-  // if (!wd.findElement(By.xpath("//div[@class='right']//select[normalize-space(.)='test1 test2 test3']//option[3]")).isSelected()) {
-  //    wd.findElement(By.xpath("//div[@class='right']//select[normalize-space(.)='test1 test2 test3']//option[3]")).click();
-  //  }
-    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(getGroupsAll().iterator().next().getName());
-    wd.findElement(By.name("add")).click();
-      }
-   // wd.findElement(By.xpath("//select[@name='group']//option[@value='" + "" + "']")).click();
-
-
-
-  public void delete(ContactData contact) {
+    public void delete(ContactData contact) {
     selectContactById(contact.getId());
     deleteSelectedContacts();
   }
 
   public void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[value = '" + id + "']")).click();
-
+  //  wd.findElement(By.cssSelector(String.format("input[id='%s']", id))).click();
   }
 
- //выбор группы из списка для добавления в нее контакта
-  public void selectSituatedGroupFromList(GroupData group) {
-    new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
-    click(By.xpath("//div[@id='content']/form[2]/div[4]/input"));
-  }
+
 
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
@@ -172,15 +156,7 @@ public class ContactHelper extends HelperBase {
     return contacts;
   }
 
-  public  List<GroupData> getGroupsAll(){
-    Session session = sessionFactory.openSession();
-    session.beginTransaction();
-    GroupData groups = new GroupData();
-    List<GroupData> result = session.createQuery( "from GroupData").getResultList();
-    session.getTransaction().commit();
-    session.close();
-    return result;
-  }
+
 
   public ContactData infoFromEditForm(ContactData contact) {
     initContactModificationById(contact.getId());
@@ -221,12 +197,23 @@ public class ContactHelper extends HelperBase {
   public void addContact(ContactData contact, GroupData group) {
     selectContactById(contact.getId());
     addSelectedContactToGroup(group);
-    //contactCache = null;
+
       }
 
   private void addSelectedContactToGroup(GroupData group) {
     new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
     click(By.xpath("//div[@id='content']/form[2]/div[4]/input"));
+  }
+
+  public void deleteFromGroup(ContactData contact, GroupData group) {
+    selectGroupById(String.valueOf(group.getId()));
+    selectContactById(contact.getId());
+    click(By.name("remove"));
+
+      }
+
+  public void selectGroupById(String id) {
+    new Select(wd.findElement(By.name("group"))).selectByValue(id);
   }
 }
 

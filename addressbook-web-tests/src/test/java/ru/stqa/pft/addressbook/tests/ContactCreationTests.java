@@ -43,7 +43,7 @@ public class ContactCreationTests extends TestBase {
   public void testsContactCreation(ContactData contact) {
     Groups groups = app.db().groups();
     File photo = new File("src/test/resources/stru.jpeg");
-    ContactData newContact = new ContactData().withFirstname("test_name").withLastname("test_surname").withPhoto(photo)
+    ContactData newContact = new ContactData().withFirstname("name").withLastname("surname").withPhoto(photo)
             .inGroup(groups.iterator().next());
     app.goTo().homePage();
     Contacts before = app.db().contacts();
