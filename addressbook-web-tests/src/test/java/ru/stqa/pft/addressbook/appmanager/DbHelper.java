@@ -45,4 +45,65 @@ public Groups groups()   {
     session.close();
     return new Contacts(result);
   }
+
+  public ContactData getContactFromDb(int id) {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    ContactData result = (ContactData) session.createQuery("from ContactData where id=" + id).getSingleResult();
+    session.getTransaction().commit();
+    session.close();
+    return result;
+  }
+
+  public GroupData getGroupFromDb(int id) {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    GroupData result = (GroupData) session.createQuery("from GroupData where id=" + id).getSingleResult();
+    session.getTransaction().commit();
+    session.close();
+    return result;
+  }
+
+
+  public GroupData getGroupWithMaxIDFromDb() { //Выбор самой поздней группы
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    GroupData result = (GroupData) session.createQuery("from GroupData where id = (select max(group1.id) from GroupData group1)").getSingleResult();
+    session.getTransaction().commit();
+    session.close();
+    return result;
+  }
+
+  public Groups getGroupsOfContactFromDb(int id) {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<GroupData> result = session.createQuery("from ContactData where group_id=" + id).list();
+    session.getTransaction().commit();
+    session.close();
+    return new Groups(result);
+  }
+
+  // получим подходящую для добавления группу
+
+  public GroupData situatedGroup(Groups groups, ContactData contact) {
+    Groups situatedGroups = contact.getGroups(); //получили все группы, в которые входит переданный в метод контакт
+    for (GroupData group : groups) {
+      if (situatedGroups.contains(group)) {
+        continue;
+      } else {   //если среди групп контакта нет очередной взятой из общего списка групп, то эта группа - наш клиент
+        return group;
+      }
+    }
+    return null;
+  }
+
+  public ContactData contactById(int id) {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    ContactData result = (ContactData) session.createQuery(
+            "from  ContactData where id=" +id).uniqueResult();
+    session.getTransaction().commit();
+    session.close();
+    return result;
+  }
 }

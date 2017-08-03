@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 
@@ -11,6 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "addressbook")
+@XStreamAlias("contact")
 public class ContactData {
 
   @Id
@@ -123,15 +125,12 @@ public class ContactData {
     return this;
   }
 
-  public Groups getGroups() {
-    return new Groups(groups);
-  }
-
-  public ContactData withAllEmails(String allEmails) {
+    public ContactData withAllEmails(String allEmails) {
     this.allEmails = allEmails;
     return this;
   }
 
+  public Groups getGroups() {    return new Groups(groups);   }
 
   public int getId() {      return id;    }
 
@@ -189,6 +188,11 @@ public class ContactData {
    }
   }
 
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -234,8 +238,4 @@ public class ContactData {
   }
 
 
-  public ContactData inGroup(GroupData group) {
-    groups.add(group);
-    return this;
-  }
 }
