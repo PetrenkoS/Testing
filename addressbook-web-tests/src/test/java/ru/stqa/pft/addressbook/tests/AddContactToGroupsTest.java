@@ -34,48 +34,27 @@ public class AddContactToGroupsTest extends TestBase {
               .withHeader("header45")
               .withFooter("footer45"));
     }
+    if (app.db().contactsWithoutGroup().size() == 0) {
+      app.contact().create(new ContactData().withFirstname("firstname2").withLastname("lastname2"), true);
+    }
 
   }
 
+
+ 
 
   @Test
-  public void testAddSelectedContactToGroup() { //Добавляет выбранный контакт в группу
-    int contactId = 0;
-    boolean finished = false;
-    Groups beforeAddGroups = null;
-    Groups beforeWithAddedGroups = null;
-    Groups exitedGroups = app.db().groups();
-    Contacts contacts = app.db().contacts();
-
-    for (ContactData selectContact : contacts) {
-      beforeAddGroups = selectContact.getGroups();
-      GroupData newGroup = app.contact().getGroupToAdd(exitedGroups, selectContact);
-      if (newGroup != null) {
-        app.contact().addContact(selectContact, newGroup);
-        contactId = selectContact.getId();
-        beforeWithAddedGroups = beforeAddGroups.withAdded(newGroup);
-        finished = true;
-        break;
-      }
-    }
-
-    if (!finished) {
-      app.goTo().groupPage();
-      app.group().create(new GroupData().withName("test_name").withHeader("test_header").withFooter("test_footer"));
-      Groups newGroups = app.db().groups();
-      GroupData recentGroup = newGroups.stream().max((g1, g2) -> Integer.compare(g1.getId(), g2.getId())).get();
-      ContactData contact = contacts.iterator().next();
-      contactId = contact.getId();
-      app.goTo().homePage();
-      app.contact().addContact(contact, recentGroup);
-      app.goTo().homePage();
-      beforeWithAddedGroups = beforeAddGroups.withAdded(recentGroup);
-    }
-    Groups groupAfter = app.db().contactById(contactId).getGroups();
-    assertThat(groupAfter, equalTo(beforeWithAddedGroups));
+  public void testAddContactToGroup() {
+    Contacts before = app.db().contacts();
+    app.goTo().homePage();
+    Groups group = app.db().groups();
+    ContactData modifiedContact = app.db().contactsWithoutGroup().iterator().next();
+    GroupData addedGroup = group.iterator().next();
+    app.contact().selectAddContact(modifiedContact.getId());
+    app.contact().addContactToGroup(addedGroup.getId());
+    Contacts after = app.db().contacts();
+    assertThat(after, equalTo(before.without(modifiedContact).withAdded(modifiedContact.inGroup(addedGroup))));
   }
-
-
 }
 
 

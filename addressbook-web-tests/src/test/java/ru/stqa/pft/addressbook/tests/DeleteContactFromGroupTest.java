@@ -37,11 +37,10 @@ public class DeleteContactFromGroupTest extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() { //Проверяет, есть ли хоть одна группа
+    app.goTo().groupPage();
     if(app.db().groups().size() == 0) {
-      app.goTo().groupPage();
-      app.group().create(new GroupData().withName("test1")
-              .withHeader("test2")
-              .withFooter("test3"));
+
+      app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
     }
     Groups groups = app.db().groups();
 
@@ -52,7 +51,7 @@ public class DeleteContactFromGroupTest extends TestBase {
               .withLastname("B")
               .inGroup(groups.iterator().next()), true);
     } else {
-      ContactData contact= app.db().contacts().iterator().next();
+      ContactData contact = app.db().contacts().iterator().next();
       if(contact.getGroups().size() == 0) {
         contact.inGroup(groups.iterator().next());
       }

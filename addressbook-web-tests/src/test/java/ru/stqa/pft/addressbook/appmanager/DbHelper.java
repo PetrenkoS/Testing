@@ -106,4 +106,16 @@ public Groups groups()   {
     session.close();
     return result;
   }
+
+  public Contacts contactsWithoutGroup() {
+    Contacts result = new Contacts();
+    Groups groupsFull = groups();
+    Contacts contactsFull = contacts();
+    for (ContactData contact : contactsFull) {
+      if (contact.getGroups().size() < groupsFull.size()) {
+        result.add(contact);
+      }
+    }
+    return new Contacts(result);
+  }
 }
