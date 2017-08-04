@@ -24,6 +24,7 @@ public class ContactHelper extends HelperBase {
   public ContactHelper(WebDriver wd) {
     super(wd);
   }
+
   private SessionFactory sessionFactory;
 
   public void fillContactForms(ContactData contactData, boolean creation) {
@@ -95,29 +96,16 @@ public class ContactHelper extends HelperBase {
   public void create(ContactData contact, boolean creation) {
     fillContactForms(contact, creation);
     submitAddContact();
-
   }
 
-  public void deleteSelectedContactsFromGroup(ContactData contact) {
-    if (!wd.findElement(By.xpath("//form[@id='right']/select//option[3]")).isSelected()) { //выбираем наверху справа группу
-      click(By.xpath("//form[@id='right']/select//option[3]"));
-    }
-    selectContactById(contact.getId());
-    click(By.name("remove"));
-    wd.switchTo().alert().accept();
-  }
-
-    public void delete(ContactData contact) {
+  public void delete(ContactData contact) {
     selectContactById(contact.getId());
     deleteSelectedContacts();
   }
 
   public void selectContactById(int id) {
-    wd.findElement(By.cssSelector("input[value = '" + id + "']")).click();
-  //  wd.findElement(By.cssSelector(String.format("input[id='%s']", id))).click();
+    wd.findElement(By.xpath("//input[@value='" + id + "']")).click();
   }
-
-
 
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
@@ -157,7 +145,6 @@ public class ContactHelper extends HelperBase {
   }
 
 
-
   public ContactData infoFromEditForm(ContactData contact) {
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
@@ -184,33 +171,6 @@ public class ContactHelper extends HelperBase {
     cells.get(7).findElement(By.tagName("a")).click();
   }
 
-  public GroupData getGroupToAdd(Groups groups, ContactData contact) {
-    Groups beforeAssignmentGroups = contact.getGroups();
-    for(GroupData group : groups) {
-      if(!beforeAssignmentGroups.contains(group)) {
-        return group;
-      }
-    }
-    return null;
-  }
-
-  public void addContact(ContactData contact, GroupData group) {
-    selectContactById(contact.getId());
-    addSelectedContactToGroup(group);
-
-      }
-
-  private void addSelectedContactToGroup(GroupData group) {
-    new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
-    click(By.xpath("//div[@id='content']/form[2]/div[4]/input"));
-  }
-
-  public void deleteFromGroup(ContactData contact, GroupData group) {
-    selectGroupById(String.valueOf(group.getId()));
-    selectContactById(contact.getId());
-    click(By.name("remove"));
-
-      }
 
   public void selectGroupById(String id) {
     new Select(wd.findElement(By.name("group"))).selectByValue(id);
@@ -223,6 +183,15 @@ public class ContactHelper extends HelperBase {
   public void addContactToGroup(int id) {
     wd.findElement(By.xpath("//select[@name='group']//option[@value='" + "" + "']")).click();
     click(By.cssSelector("input[name='add']"));
+  }
+
+  public void selectDeletedGroupFromList(GroupData group) {
+    new Select(wd.findElement(By.xpath("//select[@name = 'group']"))).selectByVisibleText(group.getName());
+  }
+
+  public void deleteContactFromGroup(ContactData contact) {
+    selectContactById(contact.getId());
+    click(By.name("remove"));
   }
 }
 

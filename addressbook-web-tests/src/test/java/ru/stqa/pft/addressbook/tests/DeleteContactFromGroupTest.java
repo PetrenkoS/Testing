@@ -1,34 +1,14 @@
 package ru.stqa.pft.addressbook.tests;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.sql.*;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.junit.MatcherAssert.assertThat;
-import static org.testng.Assert.assertEquals;
 
 /**
  * Created by Admin on 25.07.2017.
@@ -46,29 +26,33 @@ public class DeleteContactFromGroupTest extends TestBase {
 
     app.goTo().homePage();
     if(app.db().contacts().size() == 0) {
-      app.contact().create(new ContactData()
-              .withFirstname("A")
-              .withLastname("B")
-              .inGroup(groups.iterator().next()), true);
-    } else {
-      ContactData contact = app.db().contacts().iterator().next();
-      if(contact.getGroups().size() == 0) {
-        contact.inGroup(groups.iterator().next());
-      }
+      app.contact().create(new ContactData().withFirstname("firstname3").withLastname("lastname3").inGroup(groups.iterator().next()), true);
+       }
+    if (app.db().contactsAreInGroup().size() == 0) {
+      app.goTo().homePage();
+      Groups group = app.db().groups();
+      ContactData modifiedContact = app.db().contactsWithoutGroup().iterator().next();
+      GroupData addedGroup = group.iterator().next();
+      app.contact().selectAddContact(modifiedContact.getId());
+      app.contact().addContactToGroup(addedGroup.getId());
     }
   }
 
   @Test
   public void testDeleteContactFromGroup() { //Удаляет контакт из группы
-    ContactData contact = app.db().contacts().iterator().next();
-    Groups before = contact.getGroups();
-    GroupData deleteGroup = before.iterator().next();
     app.goTo().homePage();
-    app.contact().deleteFromGroup(contact, deleteGroup);
+    Groups groups = app.db().groups();
+    Contacts before = app.db().contacts();
     app.goTo().homePage();
-    app.contact().selectGroupById("");
+    for (GroupData group : groups) {
+      app.contact().selectDeletedGroupFromList(group);
+    }
+    Contacts contacts = app.db().contacts();
+    ContactData requiredContact = app.db().contactById(contacts.iterator().next().getId());
     app.goTo().homePage();
-    Groups after = app.db().contactById(contact.getId()).getGroups();
-    assertThat(after, equalTo(before.without(deleteGroup)));
+    app.contact().deleteContactFromGroup(requiredContact);
+    Contacts after = app.db().contacts();
+    ContactData contactFromDb = app.db().contactById(requiredContact.getId());
+    assertThat(after, equalTo(before.without(requiredContact).withAdded(contactFromDb)));
   }
 }

@@ -22,8 +22,8 @@
       <file leaf-file-name="AddContactToGroupsTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/AddContactToGroupsTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="959">
-              <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+            <state relative-caret-position="176">
+              <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -34,8 +34,8 @@
       <file leaf-file-name="DbHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/DbHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="119" column="3" lean-forward="false" selection-start-line="119" selection-start-column="3" selection-end-line="119" selection-end-column="3" />
+            <state relative-caret-position="264">
+              <caret line="72" column="37" lean-forward="true" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -47,34 +47,6 @@
             <state relative-caret-position="408">
               <caret line="43" column="38" lean-forward="false" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MethodInvocationHelper.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/6.11/77da7afb24d57b640d9803593a6222c7de12dd4e/testng-6.11-sources.jar!/org/testng/internal/MethodInvocationHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1326">
-              <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#9121#9122#0" expanded="false" />
-                <element signature="e#9156#9157#0" expanded="false" />
-                <element signature="e#13660#13661#0" expanded="false" />
-                <element signature="e#13695#13696#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GroupCreationTests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/GroupCreationTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -108,9 +80,11 @@
       <file leaf-file-name="DeleteContactFromGroupTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/DeleteContactFromGroupTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="54" column="43" lean-forward="true" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
-              <folding />
+            <state relative-caret-position="884">
+              <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -118,14 +92,16 @@
       <file leaf-file-name="ContactHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ContactHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="225" column="3" lean-forward="false" selection-start-line="225" selection-start-column="3" selection-end-line="225" selection-end-column="3" />
+            <state relative-caret-position="363">
+              <caret line="192" column="0" lean-forward="false" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7906#7907#0" expanded="true" />
-                <element signature="e#7978#7979#0" expanded="true" />
-                <element signature="e#8020#8021#0" expanded="true" />
-                <element signature="e#8097#8098#0" expanded="true" />
+                <element signature="e#3475#3476#0" expanded="true" />
+                <element signature="e#3549#3550#0" expanded="true" />
+                <element signature="e#6582#6583#0" expanded="true" />
+                <element signature="e#6654#6655#0" expanded="true" />
+                <element signature="e#6696#6697#0" expanded="true" />
+                <element signature="e#6773#6774#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -450,17 +426,17 @@
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/GroupHelper.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/model/ContactData.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactCreationTests.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/DeleteContactFromGroupTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/DbHelper.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ContactHelper.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/AddContactToGroupsTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/DeleteContactFromGroupTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ContactHelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/DbHelper.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-227" />
-    <option name="y" value="28" />
-    <option name="width" value="1772" />
+    <option name="x" value="-322" />
+    <option name="y" value="37" />
+    <option name="width" value="1726" />
     <option name="height" value="1065" />
   </component>
   <component name="ProjectView">
@@ -638,7 +614,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.AddContactToGroupsTest">
+  <component name="RunManager" selected="TestNG.DeleteContactFromGroupTest.testDeleteContactFromGroup">
     <configuration default="false" name="DeleteContactFromGroupTest.testDeleteContactFromGroup" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1026,11 +1002,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="TestNG.AddContactToGroupsTest" />
-        <item index="1" class="java.lang.String" itemvalue="TestNG.AddContactToGroupsTest.testAddContactToGroup" />
+        <item index="0" class="java.lang.String" itemvalue="TestNG.DeleteContactFromGroupTest.testDeleteContactFromGroup" />
+        <item index="1" class="java.lang.String" itemvalue="TestNG.AddContactToGroupsTest" />
         <item index="2" class="java.lang.String" itemvalue="TestNG.DeleteContactFromGroupTest" />
-        <item index="3" class="java.lang.String" itemvalue="TestNG.AddContactToGroupsTest.testAddSelectedContactToGroup" />
-        <item index="4" class="java.lang.String" itemvalue="TestNG.DeleteContactFromGroupTest.testDeleteContactFromGroup" />
+        <item index="3" class="java.lang.String" itemvalue="TestNG.AddContactToGroupsTest.testAddContactToGroup" />
+        <item index="4" class="java.lang.String" itemvalue="TestNG.AddContactToGroupsTest.testAddSelectedContactToGroup" />
       </list>
     </recent_temporary>
   </component>
@@ -1048,39 +1024,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AddContactToGroupsTest - 2017.08.04 at 11h 56m 12s.xml">
+    <history-entry file="AddContactToGroupsTest - 2017.08.04 at 12h 50m 13s.xml">
       <configuration name="AddContactToGroupsTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="AddContactToGroupsTest - 2017.08.04 at 12h 17m 15s.xml">
+    <history-entry file="AddContactToGroupsTest - 2017.08.04 at 12h 50m 50s.xml">
       <configuration name="AddContactToGroupsTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="AddContactToGroupsTest - 2017.08.04 at 12h 21m 51s.xml">
+    <history-entry file="AddContactToGroupsTest - 2017.08.04 at 13h 05m 43s.xml">
       <configuration name="AddContactToGroupsTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="AddContactToGroupsTest - 2017.08.04 at 12h 21m 57s.xml">
+    <history-entry file="AddContactToGroupsTest - 2017.08.04 at 13h 24m 39s.xml">
       <configuration name="AddContactToGroupsTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="AddContactToGroupsTest_testAddContactToGroup - 2017.08.04 at 12h 11m 48s.xml">
-      <configuration name="AddContactToGroupsTest.testAddContactToGroup" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="AddContactToGroupsTest_testAddSelectedContactToGroup - 2017.08.04 at 11h 45m 55s.xml">
-      <configuration name="AddContactToGroupsTest.testAddSelectedContactToGroup" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="AddContactToGroupsTest_testAddSelectedContactToGroup - 2017.08.04 at 11h 51m 08s.xml">
-      <configuration name="AddContactToGroupsTest.testAddSelectedContactToGroup" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="DeleteContactFromGroupTest - 2017.08.04 at 11h 45m 29s.xml">
+    <history-entry file="DeleteContactFromGroupTest - 2017.08.04 at 12h 43m 32s.xml">
       <configuration name="DeleteContactFromGroupTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="DeleteContactFromGroupTest - 2017.08.04 at 11h 53m 18s.xml">
+    <history-entry file="DeleteContactFromGroupTest - 2017.08.04 at 12h 48m 40s.xml">
       <configuration name="DeleteContactFromGroupTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="DeleteContactFromGroupTest_testDeleteContactFromGroup - 2017.08.03 at 16h 02m 22s.xml">
+    <history-entry file="DeleteContactFromGroupTest - 2017.08.04 at 12h 49m 54s.xml">
+      <configuration name="DeleteContactFromGroupTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="DeleteContactFromGroupTest - 2017.08.04 at 13h 21m 21s.xml">
+      <configuration name="DeleteContactFromGroupTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="DeleteContactFromGroupTest_testDeleteContactFromGroup - 2017.08.04 at 13h 04m 13s.xml">
+      <configuration name="DeleteContactFromGroupTest.testDeleteContactFromGroup" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="DeleteContactFromGroupTest_testDeleteContactFromGroup - 2017.08.04 at 13h 25m 34s.xml">
       <configuration name="DeleteContactFromGroupTest.testDeleteContactFromGroup" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-227" y="28" width="1772" height="1065" extended-state="0" />
+    <frame x="-322" y="37" width="1726" height="1065" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1098,7 +1074,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25350466" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26050422" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1150,7 +1126,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="34" />
+      <option name="time" value="36" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1175,10 +1151,12 @@
           <caret line="128" column="3" lean-forward="true" selection-start-line="128" selection-start-column="3" selection-end-line="128" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7906#7907#0" expanded="true" />
-            <element signature="e#7978#7979#0" expanded="true" />
-            <element signature="e#8020#8021#0" expanded="true" />
-            <element signature="e#8097#8098#0" expanded="true" />
+            <element signature="e#3475#3476#0" expanded="true" />
+            <element signature="e#3549#3550#0" expanded="true" />
+            <element signature="e#6582#6583#0" expanded="true" />
+            <element signature="e#6654#6655#0" expanded="true" />
+            <element signature="e#6696#6697#0" expanded="true" />
+            <element signature="e#6773#6774#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1538,35 +1516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/6.11/77da7afb24d57b640d9803593a6222c7de12dd4e/testng-6.11-sources.jar!/org/testng/internal/Invoker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="868" column="0" lean-forward="false" selection-start-line="868" selection-start-column="0" selection-end-line="868" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/DbHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="119" column="3" lean-forward="false" selection-start-line="119" selection-start-column="3" selection-end-line="119" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ContactHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="225" column="3" lean-forward="false" selection-start-line="225" selection-start-column="3" selection-end-line="225" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7906#7907#0" expanded="true" />
-            <element signature="e#7978#7979#0" expanded="true" />
-            <element signature="e#8020#8021#0" expanded="true" />
-            <element signature="e#8097#8098#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactCreationTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -1583,21 +1532,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/6.11/77da7afb24d57b640d9803593a6222c7de12dd4e/testng-6.11-sources.jar!/org/testng/internal/Invoker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="1192" column="0" lean-forward="false" selection-start-line="1192" selection-start-column="0" selection-end-line="1192" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/DbHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="72" column="37" lean-forward="true" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/AddContactToGroupsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="959">
-          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+        <state relative-caret-position="176">
+          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appmanager/ContactHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="192" column="0" lean-forward="false" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3475#3476#0" expanded="true" />
+            <element signature="e#3549#3550#0" expanded="true" />
+            <element signature="e#6582#6583#0" expanded="true" />
+            <element signature="e#6654#6655#0" expanded="true" />
+            <element signature="e#6696#6697#0" expanded="true" />
+            <element signature="e#6773#6774#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/DeleteContactFromGroupTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="54" column="43" lean-forward="true" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
-          <folding />
+        <state relative-caret-position="884">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
