@@ -28,7 +28,7 @@ public class PasswordChangeTest extends TestBase {
     app.passwordChangeHelper().login("administrator", "root");
     app.passwordChangeHelper().gotoManageUsers();
     String user = app.db().getUsername();
-    app.passwordChangeHelper().selectUser();
+    app.passwordChangeHelper().selectUserById(3);
     app.passwordChangeHelper().resetPassword();
     List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
     String email = user+"@localhost.localdomain";

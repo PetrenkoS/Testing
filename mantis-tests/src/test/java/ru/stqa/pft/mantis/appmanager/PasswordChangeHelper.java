@@ -32,11 +32,6 @@ public class PasswordChangeHelper extends HelperBase{
     click(By.xpath("//a[contains(.,'Manage Users')]"));
   }
 
-  public void selectUser() {
-    //click(By.linkText("user1501244209595"));
-    //click(By.cssSelector(String.format("a[href='manage_user_edit_page.php?user_id=%s']", id)));
-    click(By.xpath("//table[3]/tbody/tr[4]/td[1]/a"));
-      }
 
   public void resetPassword() {
     click(By.cssSelector("input[value='Reset Password']"));
@@ -50,5 +45,7 @@ public class PasswordChangeHelper extends HelperBase{
   }
 
 
-
+  public void selectUserById(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='manage_user_edit_page.php?user_id=%s']", id))).click();
+  }
 }
