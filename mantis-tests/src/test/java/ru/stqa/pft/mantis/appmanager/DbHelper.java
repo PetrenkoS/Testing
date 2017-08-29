@@ -37,6 +37,14 @@ public class DbHelper {
     return new Users(result);
   }
 
+  public Users getSituatedUsers() {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<UserData> result = session.createQuery("from UserData where username != 'administrator'").list();
+    session.getTransaction().commit();
+    session.close();
+    return new Users(result);
+  }
 
   public String getUsername() {
     Connection conn = null;

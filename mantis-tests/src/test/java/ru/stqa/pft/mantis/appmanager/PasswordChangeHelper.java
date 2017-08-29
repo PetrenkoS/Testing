@@ -48,4 +48,8 @@ public class PasswordChangeHelper extends HelperBase{
   public void selectUserById(int id) {
     wd.findElement(By.cssSelector(String.format("a[href='manage_user_edit_page.php?user_id=%s']", id))).click();
   }
+
+  public void openUserByUsername(String name) {
+    click(By.xpath("//a[text() = '" + name + "']"));
+  }
 }
